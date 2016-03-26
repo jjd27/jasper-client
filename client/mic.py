@@ -197,14 +197,14 @@ class Mic:
     def activeListenToAllOptions(self, THRESHOLD=None, LISTEN=True,
                                  MUSIC=False):
         """
-            Records until a second of silence or times out after 12 seconds
+            Records until a second of silence or times out after 3 seconds
 
             Returns a list of the matching options or None
         """
 
         RATE = 16000
         CHUNK = 4096
-        LISTEN_TIME = 12
+        LISTEN_TIME = 3
 
         # check if no threshold provided
         if THRESHOLD is None:
