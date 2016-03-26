@@ -70,7 +70,10 @@ class Mic:
         # calculate the long run average, and thereby the proper threshold
         for i in range(0, RATE / CHUNK * THRESHOLD_TIME):
 
-            data = stream.read(CHUNK)
+            try:
+		data = stream.read(CHUNK)
+            except IOError, e:
+                print "silently ignoring IOError", e
             frames.append(data)
 
             # save this data point as a score
@@ -118,7 +121,10 @@ class Mic:
         # calculate the long run average, and thereby the proper threshold
         for i in range(0, RATE / CHUNK * THRESHOLD_TIME):
 
-            data = stream.read(CHUNK)
+            try:
+		data = stream.read(CHUNK)
+            except IOError, e:
+                print "silently ignoring IOError", e
             frames.append(data)
 
             # save this data point as a score
@@ -138,7 +144,10 @@ class Mic:
         # start passively listening for disturbance above threshold
         for i in range(0, RATE / CHUNK * LISTEN_TIME):
 
-            data = stream.read(CHUNK)
+            try:
+		data = stream.read(CHUNK)
+            except IOError, e:
+                print "silently ignoring IOError", e
             frames.append(data)
             score = self.getScore(data)
 
@@ -160,7 +169,10 @@ class Mic:
         DELAY_MULTIPLIER = 1
         for i in range(0, RATE / CHUNK * DELAY_MULTIPLIER):
 
-            data = stream.read(CHUNK)
+            try:
+		data = stream.read(CHUNK)
+            except IOError, e:
+                print "silently ignoring IOError", e
             frames.append(data)
 
         # save the audio data
@@ -226,7 +238,10 @@ class Mic:
 
         for i in range(0, RATE / CHUNK * LISTEN_TIME):
 
-            data = stream.read(CHUNK)
+            try:
+		data = stream.read(CHUNK)
+            except IOError, e:
+                print "silently ignoring IOError", e
             frames.append(data)
             score = self.getScore(data)
 
